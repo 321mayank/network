@@ -6,9 +6,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const registerCollegeUsers = require('./router/college/register');
+const collegeLogin = require('./router/college/login');
 
 app.use('/', registerCollegeUsers);
-
+app.use('/', collegeLogin);
 
 app.all('*',(req,res)=>{
     res.sendStatus(404)
