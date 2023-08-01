@@ -1,7 +1,7 @@
 const { authRoutes } = require("../api/auth");
 
 const initialize = (app) =>{
-    app.use("/", authRoutes);
+    app.use("/api/auth", authRoutes);
 
 };
 
