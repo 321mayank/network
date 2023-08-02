@@ -23,7 +23,7 @@ exports.signIn = async (request, response) => {
     try{
         let requestData = request.body;
         let data = await UserService.signIn(requestData);
-        return response.status(HTTP_STATUS.OK).send({
+        return response.status(data.status).send({
             success: data.success,
             message: data.message,
             Token: data.token,
