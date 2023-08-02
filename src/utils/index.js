@@ -1,4 +1,4 @@
-let gaurd = require("./gaurd");
+let gaurd = require("./guard");
 
 module.exports = {
     gaurd

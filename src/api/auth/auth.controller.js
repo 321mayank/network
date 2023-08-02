@@ -1,4 +1,5 @@
-const UserService = require("../../models/services/users.services")
+const UserService = require("../../models/services/users.services");
+
 exports.signUp = async (request, response) => {
     try {
         let requestData = request.body;
@@ -17,3 +18,23 @@ exports.signUp = async (request, response) => {
         });
     }
 };
+
+exports.signIn = async (request, response) => {
+    try{
+        let requestData = request.body;
+        let data = await UserService.signIn(requestData);
+        return response.status(HTTP_STATUS.OK).send({
+            success: data.success,
+            message: data.message,
+            Token: data.token,
+            Refresh_Token: data.refresh_token,  
+        })
+
+    } catch (error) {
+        console.log("--signIn--:", error);
+        return response.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).send({
+            success: false,
+            message: "INTERNAL SERVER ERROR",
+        });
+    }
+}
